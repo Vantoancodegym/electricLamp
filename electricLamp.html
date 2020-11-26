@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>electricLamp</title>
+</head>
+<body>
+<div>
+    <h1>SWITCH</h1>
+    <button onclick="connectLamp()">CONNECT TO LAMP</button>
+    <button onclick="unConnect()">UN CONNECT</button>
+    <button onclick="turnOnLamp()">ON</button>
+    <button onclick="turnOffLamp()">OFF</button>
+</div>
+<div>
+    <h1>LAMP STATUS</h1>
+    <p id="lamStatus"></p>
+</div>
+<script>
+    class Lamp {
+        constructor() {
+            this.status = false;
+        }
+
+        turnOn() {
+            this.status = true;
+        }
+
+        turnOff() {
+            this.status = false;
+        }
+    }
+
+    class Switch {
+        constructor() {
+        }
+
+        conectToLamp(lamp) {
+            this.Lamp = lamp;
+        }
+        unConect() {
+            this.Lamp = "";
+        }
+
+        swicthOn() {
+            this.Lamp.turnOn()
+        }
+
+        swicthOff() {
+            this.Lamp.turnOff()
+        }
+    }
+
+    let lamp = new Lamp();
+    let swicth = new Switch();
+
+    function connectLamp() {
+        swicth.conectToLamp(lamp);
+    }
+    function unConnect(){
+        swicth.unConect();
+    }
+
+    function turnOnLamp() {
+        swicth.swicthOn();
+        document.getElementById("lamStatus").innerText = lamp.status
+    }
+
+    function turnOffLamp() {
+        swicth.swicthOff();
+        document.getElementById("lamStatus").innerText = lamp.status
+    }
+
+</script>
+</body>
+</html>
